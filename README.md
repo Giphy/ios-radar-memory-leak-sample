@@ -8,7 +8,6 @@ When a Swift class contains an optional Enum property that is marked with @objc,
 // Without @objc this enum won't leak
 // however when this enum is included in a class
 // which contains an array, it will leak
-
 @objc enum leakingObjCMarkedEnum: Int {
     
     // Just some random cases.
@@ -17,30 +16,29 @@ When a Swift class contains an optional Enum property that is marked with @objc,
 
 // Wrapper class which contains an enum and Array
 // The class needs to contain the the Array in order for
-// the Enum to leak
-
+// the Enum to leak.
 class WrapperClass {
-    
-    // Optional enums marked with @objc will leak.
-    var leakOptionalEnum: leakingObjCMarkedEnum?
-    
-    // Include an array to trigger this behaviour.
-    // Empty arrays won't cause the leak, so lets add an arbitrary Int
-    var myArray: [Int] = [80]
+  
+  // Optional enums marked with @objc will leak.
+  var leakyOptionalEnum: leakingObjCMarkedEnum?
+  
+  // Include an array to trigger this behaviour.
+  // Empty arrays won't cause the leak, so lets add an arbitrary Int
+  var myArray: [Int] = [80]
 }
 
 class ViewController: UIViewController {
+  
+  // Hang on to a reference to our Wrapper Class instance.
+  var wc: WrapperClass?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    // Hang on to a reference to our Wrapper Class instance.
-    var wc: WrapperClass?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Allocate an instance of our class
-        // and things will start leaking at this point
-        wc = WrapperClass()
-    }
+    // Allocate an instance of our class
+    // and things will start leaking at this point.
+    wc = WrapperClass()
+  }
 }
 ```
 
