@@ -25,7 +25,7 @@
 //
 //
 //  Credits:
-//  Jared Halpern, Jillian Fisher
+//  Jared Halpern, Jillian Fisher, Randy Shepherd
 //  &&
 //  https://github.com/endavid/SwiftLeaks
 //  Looks like the leak referenced at SwiftLeaks fixed by Apple
