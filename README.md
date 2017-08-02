@@ -42,6 +42,11 @@ class ViewController: UIViewController {
 }
 ```
 
+#### Command + I -> Leaks Instrument -> Record
+
+![alt text](leaking.png)
+
+
 ## How to prevent the leak
 
 Moment we convert ```leakOptionalEnum``` optional var to a non-optional var leak will disappear. 
@@ -50,6 +55,11 @@ Moment we convert ```leakOptionalEnum``` optional var to a non-optional var leak
     // Lets convert the optional property to a non-optional
     var leakOptionalEnum: leakingObjCMarkedEnum = .memoryLeakCase
 ```
+
+#### Command + I -> Leaks Instrument -> Record
+
+![alt text](no_leaks.png)
+
 
 ## Similar reported leaks
 We found a stackoverflow question which addresses the root cause of this issue without the @objc marker. (https://stackoverflow.com/questions/42602301/swift-3-enums-leak-memory-when-the-class-contains-an-array ) This particular case seems to be fixed in later versions of XC and Swift.
