@@ -39,37 +39,36 @@ import UIKit
 
 // Without @objc this enum won't leak
 // however when this enum is included in a class
-// which contains an array, it will leak.
+// which contains an array, it will leak
 @objc enum leakingObjCMarkedEnum: Int {
     
-    // just some random cases
-    case memoryLeakCase, memoryLeakCaseTwo
+    // Just some random cases.
+    case apple, orange
 }
 
-// Wrapper class which contains and Enum & Array
-// We need the Array to make sure Enums leak
+// Wrapper class which contains an enum and Array
+// The class needs to contain the the Array in order for
+// the Enum to leak.
 class WrapperClass {
-    
-    // Optional Enums leak (which are marked with @objc)
-    var leakOptionalEnum: leakingObjCMarkedEnum?
-    
-    // Create an array to prove our case
-    // Empty arrays won't cause the leak, so lets add a random Int
-    var myArray: [Int] = [80]
-
+  
+  // Optional enums marked with @objc will leak.
+  var leakyOptionalEnum: leakingObjCMarkedEnum?
+  
+  // Include an array to trigger this behaviour.
+  // Empty arrays won't cause the leak, so lets add an arbitrary Int
+  var myArray: [Int] = [80]
 }
 
 class ViewController: UIViewController {
+  
+  // Hang on to a reference to our Wrapper Class instance.
+  var wc: WrapperClass?
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
     
-    // Optinal Wrapper Class property
-    var wc: WrapperClass?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // init an object from our leaking class
-        // and things will start leaking at this point
-        wc = WrapperClass()
-    }
-    
+    // Allocate an instance of our class
+    // and things will start leaking at this point.
+    wc = WrapperClass()
+  }
 }
