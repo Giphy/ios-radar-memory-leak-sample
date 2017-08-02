@@ -44,7 +44,7 @@ class ViewController: UIViewController {
 
 #### Command + I -> Leaks Instrument -> Record
 
-![alt text](leaking.png)
+![Leaks Instrument](leaking.png)
 
 
 ## How to prevent the leak
@@ -58,7 +58,7 @@ Moment we convert ```leakOptionalEnum``` optional var to a non-optional var leak
 
 #### Command + I -> Leaks Instrument -> Record
 
-![alt text](no_leaks.png)
+![Leaks Instrument](no_leaks.png)
 
 
 ## Similar reported leaks
@@ -91,3 +91,4 @@ class ViewController: UIViewController {
 ## Conclusion
 We believe this is a compiler related issue and opening a Radar to Apple.
 
+![Leaking](https://media.giphy.com/media/l3q2MDnkLri1t7i5a/giphy.gif)
