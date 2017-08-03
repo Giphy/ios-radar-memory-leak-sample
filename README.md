@@ -4,7 +4,7 @@
 
 When a Swift class contains an optional Enum property that is marked with @objc, and this same class also contains a mutable (var) array holding at least one element, there is an unexpected memory leak.
 
-* **Important**: *(XC 9.4+ required)* This code has been tested on both XC 8.3+ and 9.4+. However, since we used XC9.4 most recently the project file seems to be modified by XCode which **breaks the compatibility with XC8.3.x** -- if you ran into this problem, you can just create a new Single View application and replace the ```ViewController.swift``` with the code below:
+* **Important**: *(XC 9.0 beta required)* This code has been tested on both XC 8.3+ and 9.0+. However, since we used XC 9.0 beta 4 most recently the project file seems to be modified by XCode which **breaks the compatibility with XC 8.3.x** -- if you ran into this problem, you can just create a new Single View application and replace the ```ViewController.swift``` with the code below:
 
 ```swift
 // Without @objc this enum won't leak
@@ -54,9 +54,8 @@ If we convert ```leakOptionalEnum``` optional var to a non-optional var leak wil
 
 ```swift
     // Let's convert the optional property to a non-optional
-    var leakOptionalEnum: leakingObjCMarkedEnum = .memoryLeakCase
+    var leakOptionalEnum: leakingObjCMarkedEnum = .apple
 ```
-
 #### Command + I -> Leaks Instrument -> Record
 
 ![Leaks Instrument](no_leaks.png)
