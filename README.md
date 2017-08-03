@@ -53,8 +53,8 @@ class ViewController: UIViewController {
 If we convert ```leakOptionalEnum``` optional var to a non-optional var leak will disappear. 
 
 ```swift
-    // Let's convert the optional property to a non-optional
-    var leakOptionalEnum: leakingObjCMarkedEnum = .apple
+// Let's convert the optional property to a non-optional
+var leakOptionalEnum: leakingObjCMarkedEnum = .apple
 ```
 #### Command + I -> Leaks Instrument -> Record
 
