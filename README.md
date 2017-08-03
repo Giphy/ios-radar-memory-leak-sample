@@ -55,6 +55,7 @@ If we convert ```leakOptionalEnum``` optional var to a non-optional var leak wil
 ```swift
     // Let's convert the optional property to a non-optional
     var leakOptionalEnum: leakingObjCMarkedEnum = .apple
+```
 #### Command + I -> Leaks Instrument -> Record
 
 ![Leaks Instrument](no_leaks.png)
