@@ -1,5 +1,7 @@
 # Optional Enum (annotated with @objc) + Mutable Array Leak (Swift 3) 
 
+* **UPDATE**: As of Xcode Version 9.0 beta 6 (9M214v) -- issue has ben resolved.
+
 ## How to reproduce the leak
 
 When a Swift class contains an optional Enum property that is marked with @objc, and this same class also contains a mutable (var) array holding at least one element, there is an unexpected memory leak.
